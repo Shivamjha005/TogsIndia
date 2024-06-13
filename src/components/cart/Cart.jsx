@@ -1,5 +1,9 @@
+// src/components/Cart.js
+
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { increment, decrement } from "../../features/cart/cartSlice.js";
 import burger1 from "../../assets/burger1.png";
 import burger2 from "../../assets/burger2.png";
 import burger3 from "../../assets/burger3.png";
@@ -20,51 +24,65 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
 );
 
 const Cart = () => {
-  const increment = (item) => {};
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const products = useSelector((state) => state.products.products);
 
-  const decrement = (item) => {};
+  const incrementHandler = (itemId) => {
+    dispatch(increment(itemId));
+  };
+
+  const decrementHandler = (itemId) => {
+    dispatch(decrement(itemId));
+  };
+
+  const getItemDetails = (itemId) => {
+    return products.find((product) => product.id === itemId);
+  };
+
+  const cartDetails = Object.keys(cartItems).map((itemId) => {
+    const product = getItemDetails(parseInt(itemId));
+    return {
+      ...product,
+      quantity: cartItems[itemId],
+    };
+  });
+
+  const subTotal = cartDetails.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const tax = subTotal * 0.18;
+  const shippingCharges = 200;
+  const total = subTotal + tax + shippingCharges;
 
   return (
     <section className="cart">
       <main>
-        <CartItem
-          title={"Cheese Burger"}
-          img={burger1}
-          value={0}
-          increment={() => increment(1)}
-          decrement={() => decrement(1)}
-        />
-        <CartItem
-          title={"Veg Cheese Burger"}
-          img={burger2}
-          value={0}
-          increment={() => increment(2)}
-          decrement={() => decrement(2)}
-        />
-        <CartItem
-          title={"Cheese Burger with French Fries"}
-          img={burger3}
-          value={0}
-          increment={() => increment(3)}
-          decrement={() => decrement(3)}
-        />
+        {cartDetails.map((item) => (
+          <CartItem
+            key={item.id}
+            title={item.title}
+            img={item.image}
+            value={item.quantity}
+            increment={() => incrementHandler(item.id)}
+            decrement={() => decrementHandler(item.id)}
+          />
+        ))}
 
         <article>
           <div>
             <h4>Sub Total</h4>
-            <p>₹{2000}</p>
+            <p>₹{subTotal.toFixed(2)}</p>
           </div>
           <div>
             <h4>Tax</h4>
-            <p>₹{2000 * 0.18}</p>
+            <p>₹{tax.toFixed(2)}</p>
           </div>
           <div>
             <h4>Shipping Charges</h4>
-            <p>₹{200}</p>
-          </div>{" "}
+            <p>₹{shippingCharges}</p>
+          </div>
           <div>
             <h4>Total</h4>
-            <p>₹{2000 + 2000 * 0.18 + 200}</p>
+            <p>₹{total.toFixed(2)}</p>
           </div>
           <Link to="/shipping">Checkout</Link>
         </article>

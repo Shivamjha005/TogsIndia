@@ -19,14 +19,14 @@ const Home = () => {
     <>
       <section className="home">
         <div>
-          <motion.h1 {...options}>MBA Burger Wala</motion.h1>
+          <motion.h1 {...options}>Togs India</motion.h1>
           <motion.p
             {...options}
             transition={{
               delay: 0.2,
             }}
           >
-            Give yourself a tasty burger.
+            Elevate your style with our curated collection, where fashion meets expression in every click..
           </motion.p>
         </div>
 

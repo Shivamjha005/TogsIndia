@@ -1,5 +1,5 @@
 import React from "react";
-import { IoFastFoodOutline } from "react-icons/io5";
+import { FaShopify } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Loader = () => {
@@ -18,7 +18,7 @@ const Loader = () => {
   };
   return (
     <div className="loader">
-      <IoFastFoodOutline />
+      <FaShopify />
 
       <div>
         <motion.p {...options}>Loading...</motion.p>

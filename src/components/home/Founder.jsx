@@ -17,12 +17,12 @@ const Founder = () => {
     <section className="founder">
       <motion.div {...options}>
         <img src={me} alt="Founder" height={200} width={200} />
-        <h3>Abhishek Singh</h3>
+        <h3>Shivam Jha</h3>
 
         <p>
-          Hey, Everyone I am Abhishek Singh, the founder of MBA Burger Wala.
+        Hey, Everyone I am shivam jha, the founder of togs India.
           <br />
-          Our aim is to create the most tasty burger on planet.
+          Our mission at Togs India is to redefine fashion and elevate your style, aiming to become the nation's premier destination for trendsetting clothing.
         </p>
       </motion.div>
     </section>

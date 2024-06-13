@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import burger from "../../assets/burger2.png";
+import burger from "../../assets/fashion2.png";
 
 const Contact = () => {
   return (

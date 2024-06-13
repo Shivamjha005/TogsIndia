@@ -10,15 +10,13 @@ const About = () => {
         <h1>About Us</h1>
 
         <article>
-          <h4>MBA Burger Wala</h4>
+          <h4>Togs India Fashion</h4>
           <p>
-            We are MBA Burger Wala. The place for most tasty burgers on the
-            enitre earth.
+          Our mission at Togs India is to redefine fashion and elevate your style, aiming to become the nation's premier destination for trendsetting clothing.
           </p>
 
           <p>
-            Explore the various type of food and burgers. Click below to see the
-            menu
+          Explore a myriad of styles and trends. Click below to discover our fashion-forward menu.
           </p>
 
           <Link to="/">
@@ -31,12 +29,11 @@ const About = () => {
           <article>
             <div>
               <img src={me} alt="Founder" />
-              <h3>Abhishek Singh</h3>
+              <h3>Shivam Jha</h3>
             </div>
 
             <p>
-              I am Abhishek Singh, the founder of MBA Burger Wala. Affiliated to
-              God Taste...
+            I am Shivam Jha, founder of Togs India, proudly affiliated with the Government of India, shaping the future of fashion.
             </p>
           </article>
         </div>
